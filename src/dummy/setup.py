@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'dummy_lidar = dummy.dummy_lidar:main',
-            'dummy_gantry = dummy.dummy_gantry:main'
+            'dummy_gantry = dummy.dummy_gantry:main',
+            'gantry_capture_service = dummy.dummy_service:main',
         ],
     },
 )

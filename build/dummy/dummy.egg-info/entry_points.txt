@@ -1,3 +1,4 @@
 [console_scripts]
 dummy_gantry = dummy.dummy_gantry:main
 dummy_lidar = dummy.dummy_lidar:main
+gantry_capture_service = dummy.dummy_service:main
