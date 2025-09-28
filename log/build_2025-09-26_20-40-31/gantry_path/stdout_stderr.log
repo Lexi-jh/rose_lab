@@ -1,0 +1,20 @@
+running egg_info
+writing ../../../build/gantry_path/gantry_path.egg-info/PKG-INFO
+writing dependency_links to ../../../build/gantry_path/gantry_path.egg-info/dependency_links.txt
+writing entry points to ../../../build/gantry_path/gantry_path.egg-info/entry_points.txt
+writing requirements to ../../../build/gantry_path/gantry_path.egg-info/requires.txt
+writing top-level names to ../../../build/gantry_path/gantry_path.egg-info/top_level.txt
+reading manifest file '../../../build/gantry_path/gantry_path.egg-info/SOURCES.txt'
+writing manifest file '../../../build/gantry_path/gantry_path.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../../build/gantry_path/gantry_path.egg-info to /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path-0.0.0-py3.12.egg-info
+running install_scripts
+Installing gantry_capture_service script to /home/lexij/rose_lab/install/gantry_path/lib/gantry_path
+Installing gantry_command script to /home/lexij/rose_lab/install/gantry_path/lib/gantry_path
+writing list of installed files to '/home/lexij/rose_lab/build/gantry_path/install.log'

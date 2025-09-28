@@ -1,0 +1,30 @@
+[1.124s] Invoking command in '/home/lexij/rose_lab/src/dummy': PYTHONPATH=/home/lexij/rose_lab/build/dummy/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/dummy build --build-base /home/lexij/rose_lab/build/dummy/build install --record /home/lexij/rose_lab/build/dummy/install.log --single-version-externally-managed install_data
+[1.303s] running egg_info
+[1.318s] writing ../../build/dummy/dummy.egg-info/PKG-INFO
+[1.318s] writing dependency_links to ../../build/dummy/dummy.egg-info/dependency_links.txt
+[1.318s] writing entry points to ../../build/dummy/dummy.egg-info/entry_points.txt
+[1.319s] writing requirements to ../../build/dummy/dummy.egg-info/requires.txt
+[1.319s] writing top-level names to ../../build/dummy/dummy.egg-info/top_level.txt
+[1.344s] reading manifest file '../../build/dummy/dummy.egg-info/SOURCES.txt'
+[1.346s] adding license file 'LICENSE'
+[1.346s] writing manifest file '../../build/dummy/dummy.egg-info/SOURCES.txt'
+[1.346s] running build
+[1.346s] running build_py
+[1.346s] copying dummy/dummy_service.py -> /home/lexij/rose_lab/build/dummy/build/lib/dummy
+[1.346s] copying dummy/dummy_gantry.py -> /home/lexij/rose_lab/build/dummy/build/lib/dummy
+[1.346s] running install
+[1.350s] running install_lib
+[1.363s] copying /home/lexij/rose_lab/build/dummy/build/lib/dummy/dummy_service.py -> /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy
+[1.363s] copying /home/lexij/rose_lab/build/dummy/build/lib/dummy/dummy_gantry.py -> /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy
+[1.364s] byte-compiling /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy/dummy_service.py to dummy_service.cpython-312.pyc
+[1.364s] byte-compiling /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy/dummy_gantry.py to dummy_gantry.cpython-312.pyc
+[1.364s] running install_data
+[1.365s] copying package.xml -> /home/lexij/rose_lab/install/dummy/share/dummy
+[1.365s] running install_egg_info
+[1.377s] removing '/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy-0.0.0-py3.12.egg-info' (and everything under it)
+[1.377s] Copying ../../build/dummy/dummy.egg-info to /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy-0.0.0-py3.12.egg-info
+[1.379s] running install_scripts
+[1.467s] Installing dummy_gantry script to /home/lexij/rose_lab/install/dummy/lib/dummy
+[1.467s] Installing dummy_lidar script to /home/lexij/rose_lab/install/dummy/lib/dummy
+[1.467s] writing list of installed files to '/home/lexij/rose_lab/build/dummy/install.log'
+[1.490s] Invoked command in '/home/lexij/rose_lab/src/dummy' returned '0': PYTHONPATH=/home/lexij/rose_lab/build/dummy/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/dummy build --build-base /home/lexij/rose_lab/build/dummy/build install --record /home/lexij/rose_lab/build/dummy/install.log --single-version-externally-managed install_data

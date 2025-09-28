@@ -1,0 +1,25 @@
+[1.273s] Invoking command in '/home/lexij/rose_lab/dummy': PYTHONPATH=/home/lexij/rose_lab/build/dummy/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/dummy build --build-base /home/lexij/rose_lab/build/dummy/build install --record /home/lexij/rose_lab/build/dummy/install.log --single-version-externally-managed install_data
+[1.576s] running egg_info
+[1.597s] writing ../build/dummy/dummy.egg-info/PKG-INFO
+[1.597s] writing dependency_links to ../build/dummy/dummy.egg-info/dependency_links.txt
+[1.597s] writing entry points to ../build/dummy/dummy.egg-info/entry_points.txt
+[1.598s] writing requirements to ../build/dummy/dummy.egg-info/requires.txt
+[1.598s] writing top-level names to ../build/dummy/dummy.egg-info/top_level.txt
+[1.649s] reading manifest file '../build/dummy/dummy.egg-info/SOURCES.txt'
+[1.649s] adding license file 'LICENSE'
+[1.650s] writing manifest file '../build/dummy/dummy.egg-info/SOURCES.txt'
+[1.651s] running build
+[1.652s] running build_py
+[1.652s] copying dummy/dummy_lidar.py -> /home/lexij/rose_lab/build/dummy/build/lib/dummy
+[1.652s] running install
+[1.658s] running install_lib
+[1.679s] copying /home/lexij/rose_lab/build/dummy/build/lib/dummy/dummy_lidar.py -> /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy
+[1.680s] byte-compiling /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy/dummy_lidar.py to dummy_lidar.cpython-312.pyc
+[1.682s] running install_data
+[1.682s] running install_egg_info
+[1.705s] removing '/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy-0.0.0-py3.12.egg-info' (and everything under it)
+[1.706s] Copying ../build/dummy/dummy.egg-info to /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy-0.0.0-py3.12.egg-info
+[1.707s] running install_scripts
+[1.859s] Installing dummy_lidar script to /home/lexij/rose_lab/install/dummy/lib/dummy
+[1.860s] writing list of installed files to '/home/lexij/rose_lab/build/dummy/install.log'
+[1.904s] Invoked command in '/home/lexij/rose_lab/dummy' returned '0': PYTHONPATH=/home/lexij/rose_lab/build/dummy/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/dummy build --build-base /home/lexij/rose_lab/build/dummy/build install --record /home/lexij/rose_lab/build/dummy/install.log --single-version-externally-managed install_data

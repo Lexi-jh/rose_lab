@@ -1,0 +1,28 @@
+running egg_info
+writing ../../build/dummy/dummy.egg-info/PKG-INFO
+writing dependency_links to ../../build/dummy/dummy.egg-info/dependency_links.txt
+writing entry points to ../../build/dummy/dummy.egg-info/entry_points.txt
+writing requirements to ../../build/dummy/dummy.egg-info/requires.txt
+writing top-level names to ../../build/dummy/dummy.egg-info/top_level.txt
+reading manifest file '../../build/dummy/dummy.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/dummy/dummy.egg-info/SOURCES.txt'
+running build
+running build_py
+copying dummy/dummy_service.py -> /home/lexij/rose_lab/build/dummy/build/lib/dummy
+copying dummy/dummy_gantry.py -> /home/lexij/rose_lab/build/dummy/build/lib/dummy
+running install
+running install_lib
+copying /home/lexij/rose_lab/build/dummy/build/lib/dummy/dummy_service.py -> /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy
+copying /home/lexij/rose_lab/build/dummy/build/lib/dummy/dummy_gantry.py -> /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy
+byte-compiling /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy/dummy_service.py to dummy_service.cpython-312.pyc
+byte-compiling /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy/dummy_gantry.py to dummy_gantry.cpython-312.pyc
+running install_data
+copying package.xml -> /home/lexij/rose_lab/install/dummy/share/dummy
+running install_egg_info
+removing '/home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/dummy/dummy.egg-info to /home/lexij/rose_lab/install/dummy/lib/python3.12/site-packages/dummy-0.0.0-py3.12.egg-info
+running install_scripts
+Installing dummy_gantry script to /home/lexij/rose_lab/install/dummy/lib/dummy
+Installing dummy_lidar script to /home/lexij/rose_lab/install/dummy/lib/dummy
+writing list of installed files to '/home/lexij/rose_lab/build/dummy/install.log'

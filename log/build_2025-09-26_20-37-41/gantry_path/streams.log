@@ -1,0 +1,50 @@
+[1.916s] Invoking command in '/home/lexij/rose_lab/rose_lidar/src/gantry_path': PYTHONPATH=/home/lexij/rose_lab/build/gantry_path/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/gantry_path build --build-base /home/lexij/rose_lab/build/gantry_path/build install --record /home/lexij/rose_lab/build/gantry_path/install.log --single-version-externally-managed install_data
+[2.259s] running egg_info
+[2.260s] creating ../../../build/gantry_path/gantry_path.egg-info
+[2.284s] writing ../../../build/gantry_path/gantry_path.egg-info/PKG-INFO
+[2.286s] writing dependency_links to ../../../build/gantry_path/gantry_path.egg-info/dependency_links.txt
+[2.286s] writing entry points to ../../../build/gantry_path/gantry_path.egg-info/entry_points.txt
+[2.287s] writing requirements to ../../../build/gantry_path/gantry_path.egg-info/requires.txt
+[2.287s] writing top-level names to ../../../build/gantry_path/gantry_path.egg-info/top_level.txt
+[2.287s] writing manifest file '../../../build/gantry_path/gantry_path.egg-info/SOURCES.txt'
+[2.336s] reading manifest file '../../../build/gantry_path/gantry_path.egg-info/SOURCES.txt'
+[2.338s] writing manifest file '../../../build/gantry_path/gantry_path.egg-info/SOURCES.txt'
+[2.338s] running build
+[2.338s] running build_py
+[2.339s] creating /home/lexij/rose_lab/build/gantry_path/build
+[2.340s] creating /home/lexij/rose_lab/build/gantry_path/build/lib
+[2.340s] creating /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.341s] copying gantry_path/gantry_command.py -> /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.341s] copying gantry_path/__init__.py -> /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.341s] copying gantry_path/hypothetical_lidar.py -> /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.341s] copying gantry_path/gantry_trajectory.py -> /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.342s] copying gantry_path/GantryCaptureService.py -> /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.342s] copying gantry_path/lidar_scan.py -> /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path
+[2.342s] running install
+[2.350s] running install_lib
+[2.375s] creating /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.375s] copying /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path/gantry_command.py -> /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.376s] copying /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path/__init__.py -> /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.376s] copying /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path/hypothetical_lidar.py -> /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.376s] copying /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path/gantry_trajectory.py -> /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.377s] copying /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path/GantryCaptureService.py -> /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.377s] copying /home/lexij/rose_lab/build/gantry_path/build/lib/gantry_path/lidar_scan.py -> /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path
+[2.378s] byte-compiling /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path/gantry_command.py to gantry_command.cpython-312.pyc
+[2.380s] byte-compiling /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path/__init__.py to __init__.cpython-312.pyc
+[2.380s] byte-compiling /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path/hypothetical_lidar.py to hypothetical_lidar.cpython-312.pyc
+[2.382s] byte-compiling /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path/gantry_trajectory.py to gantry_trajectory.cpython-312.pyc
+[2.383s] byte-compiling /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path/GantryCaptureService.py to GantryCaptureService.cpython-312.pyc
+[2.385s] byte-compiling /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path/lidar_scan.py to lidar_scan.cpython-312.pyc
+[2.387s] running install_data
+[2.387s] creating /home/lexij/rose_lab/install/gantry_path/share/ament_index
+[2.388s] creating /home/lexij/rose_lab/install/gantry_path/share/ament_index/resource_index
+[2.389s] creating /home/lexij/rose_lab/install/gantry_path/share/ament_index/resource_index/packages
+[2.390s] copying resource/gantry_path -> /home/lexij/rose_lab/install/gantry_path/share/ament_index/resource_index/packages
+[2.390s] copying package.xml -> /home/lexij/rose_lab/install/gantry_path/share/gantry_path
+[2.390s] running install_egg_info
+[2.416s] Copying ../../../build/gantry_path/gantry_path.egg-info to /home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages/gantry_path-0.0.0-py3.12.egg-info
+[2.417s] running install_scripts
+[2.595s] Installing gantry_capture_service script to /home/lexij/rose_lab/install/gantry_path/lib/gantry_path
+[2.596s] Installing gantry_command script to /home/lexij/rose_lab/install/gantry_path/lib/gantry_path
+[2.596s] writing list of installed files to '/home/lexij/rose_lab/build/gantry_path/install.log'
+[2.646s] Invoked command in '/home/lexij/rose_lab/rose_lidar/src/gantry_path' returned '0': PYTHONPATH=/home/lexij/rose_lab/build/gantry_path/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/lexij/rose_lab/install/gantry_path/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/gantry_path build --build-base /home/lexij/rose_lab/build/gantry_path/build install --record /home/lexij/rose_lab/build/gantry_path/install.log --single-version-externally-managed install_data

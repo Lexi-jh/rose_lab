@@ -1,0 +1,10 @@
+{
+  "package_name": "gantry_lidar_interfaces",
+  "non_idl_tuples": [
+    "/home/lexij/rose_lab/src/gantry_lidar_interfaces:srv/Capture.srv",
+    "/home/lexij/rose_lab/src/gantry_lidar_interfaces:srv/DeleteName.srv",
+    "/home/lexij/rose_lab/src/gantry_lidar_interfaces:srv/DeleteTimeRange.srv",
+    "/home/lexij/rose_lab/src/gantry_lidar_interfaces:srv/DownloadName.srv",
+    "/home/lexij/rose_lab/src/gantry_lidar_interfaces:srv/DownloadTimeRange.srv"
+  ]
+}

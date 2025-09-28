@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "gantry_lidar_interfaces/srv/DownloadTimeRange_Response",
+      "fields": [
+        {
+          "name": "outdata",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "gantry_lidar_interfaces/srv/DownloadTimeRange_Response",
+      "hash_string": "RIHS01_56847040731c23c17e13c63e3873482b653b2062dff7c4751a56e382ae800b86"
+    }
+  ]
+}

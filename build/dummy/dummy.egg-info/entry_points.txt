@@ -1,0 +1,3 @@
+[console_scripts]
+dummy_gantry = dummy.dummy_gantry:main
+dummy_lidar = dummy.dummy_lidar:main
