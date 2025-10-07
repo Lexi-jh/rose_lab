@@ -1,5 +1,0 @@
-[0.175s] Invoking command in '/home/lexij/rose_lab/build/gantry_lidar_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lexij/rose_lab/install/gantry_path:/home/lexij/rose_lab/install/dummy:/opt/ros/jazzy /usr/bin/cmake --build /home/lexij/rose_lab/build/gantry_lidar_interfaces -- -j22 -l22
-[0.325s] [0mCMake Error: The source directory "/home/lexij/rose_lab/rose_lidar/src/gantry_lidar_interfaces" does not exist.
-[0.326s] Specify --help for usage, or press the help button on the CMake GUI.[0m
-[0.326s] gmake: *** [Makefile:1625: cmake_check_build_system] Error 1
-[0.327s] Invoked command in '/home/lexij/rose_lab/build/gantry_lidar_interfaces' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/lexij/rose_lab/install/gantry_path:/home/lexij/rose_lab/install/dummy:/opt/ros/jazzy /usr/bin/cmake --build /home/lexij/rose_lab/build/gantry_lidar_interfaces -- -j22 -l22

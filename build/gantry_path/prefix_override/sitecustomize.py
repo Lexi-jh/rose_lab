@@ -1,4 +1,0 @@
-import sys
-if sys.prefix == '/usr':
-    sys.real_prefix = sys.prefix
-    sys.prefix = sys.exec_prefix = '/home/lexij/rose_lab/install/gantry_path'
