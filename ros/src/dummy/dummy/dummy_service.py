@@ -3,13 +3,14 @@ from rclpy.node import Node
 from std_srvs.srv import Trigger
 from sensor_msgs.msg import PointCloud2
 
-from datetime import datetime
+from datetime import datetime, timedelta
 import subprocess
-import signal
 import shutil
 from pathlib import Path
 import json
+import random
 import time
+import threading
 
 
 from gantry_lidar_interfaces.srv import (
@@ -73,7 +74,9 @@ class DummyService(Node):
 
         #variables
         self.lidar_data = None
-        self.record_process = None
+        self.recording_active = False
+        self.session_info = None
+        self.filename = None
 
         self.get_logger().info("Gantry capture service running")
 
@@ -85,7 +88,9 @@ class DummyService(Node):
         response.message = "idk what to put here"
         return response
 
+
     def capture_callback(self, request, response):
+
         """
         Capture a bag for a set time and saves it locally, zipped
         Service Arguments
@@ -94,9 +99,9 @@ class DummyService(Node):
         - outname: name of bag to save. bag will be saved as "outname_timestamp"
         """
         try:
-            duration = max(request.duration, 0.0)
+            duration = max(float(request.duration), 0.0)
             sensors = list(request.sensors)
-            outname = request.outname
+            outname = str(request.outname or "").strip()
 
             if duration <= 0.0:
                 raise ValueError('duration must be > 0 seconds')
@@ -104,53 +109,40 @@ class DummyService(Node):
             if not outname:
                 raise ValueError('outname must be provided')
 
-            if self.record_process and self.record_process.poll() is None:
+            if self.recording_active:
                 raise RuntimeError('capture already in progress')
 
-            # Format filename
-            timestamp = datetime.now().strftime(TIME_STR)
-            self.filename = f"{outname}_{timestamp}"
+            base_topics = ["/tf", "/tf_static", "/gantry/gantry_status/gantry_state"]
+            extra_topics = self._topics_from_sensors(sensors)
+            if not extra_topics:
+                extra_topics = [str(sensor) for sensor in sensors if isinstance(sensor, str) and sensor]
+            topics = list(dict.fromkeys(base_topics + extra_topics))
 
-            # Set Topics
-            topics = self._topics_from_sensors(sensors)
-            if not topics:
-                topics = ['points']
-                    
+            self._start_fake_capture(outname, sensors, topics)
+            self.get_logger().info(f"Simulating capture for {duration}s with topics: {topics}")
 
-            # Capture Bag
-            bag_path = (DATA_DIR / self.filename).resolve()
-            self.get_logger().info(f"Capturing data: {duration}s from {topics}, output: {str(bag_path)}")
-            cmd = ['ros2', 'bag', 'record', '-o', str(bag_path)] + topics
-            self.record_process = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            self.get_logger().info(f"Started recording bag: {self.filename}")
+            time.sleep(duration)
 
-            time.sleep(duration) # Delay
-
-            # End capture
-            self._stop_recording_process()
-
-            self.get_logger().info(f"Stopped recording bag: {self.filename}")
-           
-            # Zip bag
-            #self.get_logger().info(f"Making .zip archive: {self.filename}.zip")
-            #shutil.make_archive(self.filename, 'zip', DATA_DIR / self.filename)
-
-            # Delete original folder
-            #self.get_logger().info(f"Deleting original: {self.filename}")
-            #shutil.rmtree(DATA_DIR / self.filename)
+            stopped, details = self._stop_fake_capture(expected_duration=duration)
+            if not stopped:
+                raise RuntimeError('failed to finalize fake capture')
 
             response.outdata = json.dumps({
                 "status": "ACK",
                 "duration": duration,
                 "sensors": sensors,
-                "outname": self.filename
+                "topics": topics,
+                "outname": details.get("outname"),
+                "fake_bag_path": details.get("bag_path"),
+                "frames_per_sensor": details.get("frames_per_sensor"),
+                "http_url": details.get("http_url"),
             })
 
         except Exception as e:
-            self._stop_recording_process()
+            self._stop_fake_capture()
             response.outdata = json.dumps({"status": "ERROR", "reason": str(e)})
         return response
-    
+
     def download_name_callback(self, request, response):
         """
         Download bags by name. All bags with matching name will be downloaded (although there should only be one)
@@ -295,13 +287,119 @@ class DummyService(Node):
         }
         topics = []
         for sensor in sensors:
-            topic = topic_map.get(sensor.lower()) if isinstance(sensor, str) else None
+            if not isinstance(sensor, str):
+                continue
+            sensor_str = sensor.strip()
+            if not sensor_str:
+                continue
+            if sensor_str.startswith('/'):
+                topics.append(sensor_str)
+                continue
+            topic = topic_map.get(sensor_str.lower())
             if topic:
                 topics.append(topic)
         return list(dict.fromkeys(topics))
 
+    def _start_fake_capture(self, outname, sensors, topics):
+        timestamp = datetime.now().strftime(TIME_STR)
+        self.filename = f"{outname}_{timestamp}"
+        bag_path = (DATA_DIR / self.filename).resolve()
+        bag_path.mkdir(parents=True, exist_ok=True)
+
+        metadata = {
+            "outname": self.filename,
+            "requested_name": outname,
+            "started_at": datetime.now().isoformat(),
+            "sensors": list(sensors),
+            "topics": list(topics),
+            "mode": "dummy",
+        }
+        (bag_path / "metadata.json").write_text(json.dumps(metadata, indent=2))
+
+        self.session_info = {
+            "path": bag_path,
+            "sensors": list(sensors),
+            "topics": list(topics),
+            "started_at": time.time(),
+            "metadata": metadata,
+        }
+        self.recording_active = True
+        self.get_logger().info(f"Preparing fake gantry capture at: {bag_path}")
+        self.get_logger().info("Topics:\n  " + "\n  ".join(topics))
+        return self.session_info
+
+    def _write_fake_frames(self, bag_path, sensors, duration):
+        approx_frames = max(5, int(round(duration)))
+        approx_frames = min(approx_frames, 300)
+        if approx_frames <= 0:
+            approx_frames = 5
+
+        frames = []
+        base_time = datetime.now()
+        for idx in range(approx_frames):
+            ts = base_time + timedelta(milliseconds=200 * idx)
+            frame = {"timestamp": ts.isoformat(), "sensors": {}}
+            for sensor in sensors:
+                sensor_name = sensor if isinstance(sensor, str) else f"sensor_{idx}"
+                frame["sensors"][sensor_name] = {
+                    "point_count": random.randint(500, 2000),
+                    "intensity_mean": round(random.uniform(0.0, 1.0), 4),
+                    "range_min": round(random.uniform(0.3, 1.0), 3),
+                    "range_max": round(random.uniform(5.0, 20.0), 3),
+                    "note": "synthetic gantry lidar frame",
+                }
+            frames.append(frame)
+
+        (bag_path / "frames.json").write_text(json.dumps(frames, indent=2))
+        bag_file = bag_path / f"{bag_path.name}.db3"
+        bag_file.write_text("FAKE ROS2 BAG CONTENT. Generated by dummy_service for testing.\n")
+        return len(frames)
+
+    def _stop_fake_capture(self, expected_duration=None):
+        if not self.recording_active or not self.session_info:
+            return False, {}
+
+        bag_path = self.session_info["path"]
+        sensors = self.session_info["sensors"]
+        topics = self.session_info["topics"]
+        started_at = self.session_info["started_at"]
+        current_name = self.filename
+
+        duration = expected_duration
+        if duration is None:
+            duration = max(0.0, time.time() - started_at)
+
+        frame_count = self._write_fake_frames(bag_path, sensors, duration)
+
+        metadata = dict(self.session_info["metadata"])
+        metadata.update({
+            "stopped_at": datetime.now().isoformat(),
+            "duration_seconds": duration,
+            "frames_per_sensor": frame_count,
+            "fake_data": True,
+            "http_url": f"http://0.0.0.0:8000/{bag_path.name}",
+        })
+        (bag_path / "metadata.json").write_text(json.dumps(metadata, indent=2))
+
+        details = {
+            "outname": current_name,
+            "bag_path": str(bag_path),
+            "duration": duration,
+            "frames_per_sensor": frame_count,
+            "topics": topics,
+            "http_url": metadata["http_url"],
+        }
+
+        self.recording_active = False
+        self.session_info = None
+        self.filename = None
+
+        return True, details
+
     def destroy_node(self):
-        self._stop_recording_process()
+        if self.recording_active:
+            self.get_logger().info('Finalizing active fake capture before shutdown')
+            self._stop_fake_capture()
 
         if self.http_server_process and self.http_server_process.poll() is None:
             self.get_logger().info('Stopping HTTP server')
@@ -313,28 +411,6 @@ class DummyService(Node):
         self.http_server_process = None
 
         return super().destroy_node()
-
-    def _stop_recording_process(self):
-        if not self.record_process:
-            return
-
-        if self.record_process.poll() is not None:
-            self.record_process = None
-            return
-
-        self.get_logger().info('Stopping active rosbag record process')
-        try:
-            self.record_process.send_signal(signal.SIGINT)
-        except ProcessLookupError:
-            self.record_process = None
-            return
-
-        try:
-            self.record_process.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            self.record_process.kill()
-
-        self.record_process = None
 
 
 

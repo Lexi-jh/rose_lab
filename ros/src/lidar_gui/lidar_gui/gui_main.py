@@ -122,7 +122,7 @@ class TrajGui:
 
     def constrain_area(self):
         self.drawing = not self.drawing
-        print("constrain area button clicked, nice job dipshit")
+        print("constrain area button clicked")
 
     def on_click(self, event):
         if not self.drawing:

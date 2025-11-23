@@ -28,6 +28,7 @@ setup(
             'dummy_lidar = dummy.dummy_lidar:main',
             'dummy_gantry = dummy.dummy_gantry:main',
             'gantry_capture_service = dummy.dummy_service:main',
+            'dummy_mastcam = dummy.dummy_mastcam:main'
         ],
     },
 )
